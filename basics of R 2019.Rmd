@@ -1,0 +1,1806 @@
+---
+title: "Basics of R"
+output: 
+    html_document:
+        toc: true
+        toc_float: true
+---
+
+# Syllabus
+- Introduction
+    + **Installing R and RStudio**: R Versions, Download and install R, Installing Packages, Loading Packages, Updating R and its Packages.
+    + **User Interface, Packages and Help**: The R Console, RStudio, Getting Help. 
+    + **R Packages**: Listing Packages in Local Libraries, Loading Packages, Package Repositories, Finding and Installing Packages Inside R and other Repositories, 
+
+- The R Language
+    + **Overview**: Expressions, Objects, Symbols, Functions, Special Values.
+    + **R Objects**: Vectors, Integers, Character, Logicals, Complex and Raw, Attributes of Objects, Matrices, Arrays, Class, Dates and Time, Factors, Coercion, Lists, Data Frames, Changing values, Logical Subsetting, Boolean Operators, Missing Information and removing NAs. 
+    + **R Environment**: Symbols, Working with Environments, The Global Environment.
+- Working with Data in R
+    + **Loading and Saving data in R**: Entering Data within R, Data Editor (RStudio), Datasets in R, Working Directory, The read Family, HTML data links, R Files, Saving R Files, Excel Spreadsheets and R, Loading files from other programs.
+    + **Preparing Data**: Combining, Transforming, Binning, Subsetting, Cleaning, Sorting and Summarizing Data.
+- Graphics
+    + **Base Graphics**: Scatter Plots, Time Series Plots, Bar Plots, Histogram, Box-Plots, Customizing Charts.
+
+# What is R?
+- R is an open-source software environment for statistical computing and graphics.
+- R compiles and runs on Windows, Mac OS X, and numerous UNIX platforms (such as Linux). 
+- R is open source software.
+Other software like STATA may cost on an average of $1000 annual license fee.
+
+# The R Environment
+- Features of R
+    + An effective data handling and storage facility. 
+    + A suite of operators for calculations on arrays, in particular matrices.
+    + A collection of tools for data analysis.
+    + Graphical facilities for data analysis.
+    + A well developed, simple, and effective programing language.
+- The R system is a software environment for statistical computing and graphics.
+- The term “environment” is intended to characterize R as a fully planned and coherent system, rather than an incremental accretion of very specific and inflexible tools, as is frequently the case with other data analysis software. 
+- R is an implementation of S language.
+- S is a language that was developed by John Chambers and others at Bell Labs.
+- S was initiated in 1976 as a statistical analysis environment. 
+- R was created in New Zealand in the year 1991 by Ross Ihaka and Robert Gentleman.
+- The first version R 1.0.0 was released in the year 2000 after Ross and Robert agreed to make it a free software under GNU General Public License in 1995.
+- The name “GNU” is a recursive acronym for “GNU's Not Unix.” See https://gnu.org   
+- Usually, there is an official release of R twice a year.
+- In S, statistical analysis is usually done as a series of steps with intermediate results being stored in objects, Thus whereas SPSS and SAS will give copious output from a regression analysis, R will give minimal output and store the results in a fit object for subsequent interrogation by further R functions.
+
+# Design of the R system
+- R system is divided into 2 conceptual parts – 
+    + The “base” R system that you download from CRAN https://cran.r-project.org/
+    + Everything else.
+- The “base” package contains the most fundamental functions used to run R.
+- The other packages can be downloaded and installed as per user requirements; for eg.`AER` package is required for econometrics.
+
+# The R console
+```{r, echo=FALSE, fig.cap="Fig 1:The R Console", out.width='90%'}
+knitr::include_graphics("C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/Basics of R 2019 pics/RConsole.png")
+```
+
+The R console is a tool that allows you to type commands into R and see how the R system responds. The commands that you type into the console are called expressions. By default, R will display a greater-than sign (“>”) in the console (at the beginning of a line, when nothing else is shown) when R is waiting for you to enter a command into the console. R is prompting you to type something, so this is called a prompt. For example, suppose that you typed 17 + 3 on the console, you would see something similar to this:
+
+```{r, echo=FALSE, fig.cap="Fig 2:Simple operations in R Console", out.width='90%'}
+knitr::include_graphics("C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/Basics of R 2019 pics/RConsoleExample.PNG")
+```
+
+# R Studio
+
+- R Studio Integrated Development Environment (IDE) is a powerful and productive user interface for R.
+- Like R, it is free and multi-platform. It can be downloaded from https://www.rstudio.com/
+- RStudio is a separate open-source project that brings many powerful coding tools together into an intuitive, easy-to-learn interface.
+- The RStudio program can be run on the desktop or through a web browser. 
+- The desktop version is available for Windows, Mac OS X, and Linux platforms 
+
+```{r, echo=FALSE, out.width='30%'}
+knitr::include_graphics("C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/Basics of R 2019 pics/RStudioLogo.png")
+```
+
+```{r, echo=FALSE, out.width='90%', fig.cap="Fig 3:RStudio"}
+knitr::include_graphics("C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/Basics of R 2019 pics/RStudio.png")
+```
+
+# Lets begin!
+You can now unistall the R and RStudio already installed in your computers so that you can actually have a fresh start.
+```{r, echo=FALSE, out.width="90%"}
+knitr::include_graphics("C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/Basics of R 2019 pics/uninstall.png")
+```
+
+
+# Downloading and installing R and RStudio
+
+```{r, echo=FALSE, out.width='90%'}
+knitr::include_graphics("C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/Basics of R 2019 pics/downloadR1.png")
+knitr::include_graphics("C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/Basics of R 2019 pics/downloadR2.png")
+knitr::include_graphics("C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/Basics of R 2019 pics/downloadR3.png")
+knitr::include_graphics("C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/Basics of R 2019 pics/downloadRStudio1.png")
+knitr::include_graphics("C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/Basics of R 2019 pics/downloadRStudio2.png")
+knitr::include_graphics("C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/Basics of R 2019 pics/downloadRStudio3.png")
+```
+
+
+# Getting help
+To get a help on a specific function say "solve", the command is
+```{r, eval=FALSE}
+help(mean)
+# or
+?mean()
+# or
+??mean
+```
+
+For a feature specified by special characters, the argument must be enclosed in double or single quotes making it a character string. This is also necessary for a few words with syntatic meaning including `if`, `for` and `function`.
+```{r, eval=FALSE}
+help("[["); help("if")
+?"[["
+```
+
+# Packages in R
+A package is a related set of functions, help files, and data files that have been bundled together. For example, the `stats` package contains functions for doing statistical analysis. Some packages are included in R, other packages are available from public package repositories. You can also make your own packages!
+
+Inorder to get the list of packages loaded by default use the command;
+```{r, eval=-4}
+getOption("defaultPackages")
+
+# if you wish to see the list of currently loaded packages
+(.packages())
+
+# to see all the packages available
+(.packages(all.available = TRUE))
+
+# or
+library()
+
+```
+
+To install and load a specific package use the following command. Remember that you have to load the package everytime when you are in a new R session.
+```{r eval=FALSE}
+install.packages("AER")
+library(AER)
+```
+
+Some packages can contatin data. Inorder to access data from a specific package use the following command.
+```{r, eval=-1}
+data(package = "AER")
+data(SwissLabor, package = "AER") ; head(SwissLabor)
+```
+Finally, to remove any R package use the function;
+```{r, eval=FALSE}
+remove.packages("AER")
+```
+# R Commands and Case Sensitivity
+- Technically R is an 'expression language' and is case sensitive, so `A` and `a` are different symbols and would refer to different variables.
+- Commands are seperated either by a new-line or a semi colon (;). 
+- Comments can be put almost anywhere starting with a hashmark (#).
+- If a command is not complete at the end of a line, R will give a different prompt, by default + on second and subsequent lines and continue to read input until the command is syntatically complete.
+
+# Expressions
+Examples of expressions in R include assignment statements, conditional statements and arithmetic expressions.
+```{r}
+x <- 1; x
+if (1>2) "yes" else "no"
+```
+
+
+Expressions are composed of objects and fuctions they may be seperated with new lines or semicolons.
+```{r}
+"hello how are you" ;100+50 ; sqrt(100) 
+```
+
+
+# Objects
+An object is a thing that is represented by the computer.
+
+- The entries that R creates and manipulates are known as 'objects' (more on this later).
+- During an R session objects are created and stored by name.
+- The R command `objects()` can be used to display the names of the objects that are currently stored within R.
+- The collection of objects currently stored is called the 'workspace'.
+- To remove objects the function `rm()` is available
+```{r}
+objects(); x <- c("my", 12, TRUE); x
+objects()
+rm(x); objects()
+```
+
+R has 5 basic/atomic classes of objects
+
+>- character: `"Hello"`
+>- numeric(real numbers/decimal numbers): `c(1,2.36)`.
+>- integer: `10L`
+>- complex :`2+4i`
+>- logical: `TRUE/FALSE`.
+
+The most basic object is a vector. Vectors can contain objects of same class only. However, `list()` is an exception and can contain a mixture of objects.
+
+`Inf` is a special number.
+```{r}
+1/Inf
+Inf/Inf
+```
+
+`NaN` (Not A Number) is a value that represents an undefined value `NaN` may represent missing values as well.
+
+Objects in R have attributes like `names()`, `dimnames()` (for a matrix, array or data frame), `class()`, `length()`.
+```{r}
+class(10L)
+class("Hello!")
+length(12)
+names(12)
+roll <- c(170, 150, 200)
+names(roll) <- "Amit"; names(roll)
+names(roll) <- c("Amit", "Sourav", "Sneha"); names(roll)
+```
+
+The things that we are typing/ we type in R are called expressions. `<-` is called the assignment operator that assigns a value to a symbol.
+
+```{r}
+num <- 1200
+char <- "Hello!"
+comp <- 2+4i
+```
+
+You can name an object in R almost anything you want, but there are a few rules.
+
+1. First, a name cannot start with a number. 
+2. Second, a name cannot use some special symbols,like `^`, `!`, `$`, `@`, `+`, `-`, `/`, or `*`.
+
+Assignment can also be made using the function 
+```{r}
+assign("num", 1200 )
+num
+assign("nos", c(1, 1.2, 300, 45)); class(nos)
+nos
+```
+
+# Sorting 
+`sort(x)` returns a vector of same size as x with the elements arranged in increasing order.
+```{r}
+d <- c(10,50,12,63,74,1,89,5,3,6,4)
+sort(d)
+e <- c("anish", "zebra", "p", "e")
+sort(e)
+```
+
+To sort in descending order use the argument `decreasing = TRUE`.
+```{r}
+sort(d, decreasing  = TRUE)
+```
+
+# Generating regular sequences
+```{r}
+x <- 1:30; x 
+x <- 30:1; x
+x <- c(1,2,3,4,5,6,7,8,9); x
+x <- seq(1,30); x
+x <- seq(-5, 5, by = 0.2); x
+x <- seq(10, 2, length.out = 5); x
+x <- seq(length = 51, from = -5, by = 0.2); x
+```
+
+A related function is rep() which can be used for replicating objects in various ways.
+```{r}
+x <- c("hi","hello"); x
+y <- rep(x, times = 2); y
+y <- rep(3, times = 10);y
+```
+
+The paste() function takes an arbitrary number of arguments and concatenates one by one into character strings. Any numbers given among the arguments are coerced into character strings.
+```{r}
+x <- paste("a", 1:10, sep = "")
+x
+```
+
+To collapse the output into a single string pass the `collapse` argument.
+```{r}
+labs <- paste(c("x", "y"), 1:10, sep = "")
+labs
+labs1 <- paste(c("x", "y"), 1:10, sep = "", collapse = "-")
+labs1
+```
+
+# Working directory
+To check the location of your workig derectory, use `getwd()`and to set a specific folder as your working directory use `setwd("file path")`. 
+
+# The "pass-by-value" and "pass-by-reference" in R
+By defalut R uses "pass-by-value" paradigm. Consider the following example;
+```{r}
+x <- 1:10
+x*2
+x
+# or consider
+y <- x
+x*3
+y
+```
+
+> If you want to use the pass-by-reference paradigm, have a look at the `R.oo`, `mutatr` and `proto` packages..
+
+# Coercion 
+1. Implicit Coercion
+2. Explicit Coercion
+
+Implicit Coercion occurs when we try to combine objects of two or more different classes. The ordering is roughly **LINCL** i.e `logical < integer < numeric < complex < character<list`.
+```{r}
+x <- c(1.7, "a"); class(x)
+y <- c(TRUE, 2);class(y)
+z <- c("a", TRUE);class(z)
+
+```
+We can explicitly coerce objects by using `as.*()` functions.
+```{r}
+x <- c(0,1,2,3,4,5,6)
+class(x)
+as.character(x)
+as.complex(x)
+as.logical(x)
+```
+
+Nonsensical coercion result in NAs. NA stands for Not Available.
+```{r}
+x <- c("my", "name ", "is", "khan!")
+as.numeric(x)
+as.complex(x)
+as.logical(x)
+
+```
+
+# Operations on Matrices
+Matrices are vectors with `dimension()` attribute.
+```{r}
+m <- matrix(1:10, nrow = 2, ncol = 5)
+m
+dim(m)
+length(m)
+class(m)
+```
+
+
+Filling  direction of a matrix
+```{r}
+m <- matrix(1:10, nrow = 2, ncol = 5); m
+m <- matrix(1:10, nrow = 2, ncol = 5, byrow = TRUE);m
+```
+
+#### Row and column binding
+This applies to multiple vectors of equal length column-binding and row-biding to create matrices.
+```{r}
+x <- 1:5
+y <- 6:10
+cbind(x,y)
+rbind(x,y)
+# or
+cbind(1:5, 6:10)
+```
+
+#### Subsetting
+Subsetting a matrix with `[` will subset objects of the same class
+```{r}
+x <- matrix(1:10, 2, 5); x
+x[1,2]
+x[2,5]
+x[,2]
+x[2,]
+x[,1:3] # subset the first 3 columns of the matrix
+x[,c(2,4)] # subset the second and fourth columns
+x[1,c(2,4)] # subset the 1st row and second + fourth columns
+diag(x) # this works only for a square matrix
+
+```
+
+When we subset a matrix it is seen that the output is a vector and not in a matrix form. This can be corrected by setting `drop = FALSE` argument.
+```{r}
+x <- matrix(1:10, 2, 5); x
+colnames(x) <- c("Kolkata", "Delhi", "Mumbai", "Chennai", "Bangalore")
+row.names(x) <- c("temp", "rain")
+x
+
+```
+What is the temperature for Delhi?
+```{r}
+x[1,3]
+
+```
+Now let's see the temperature values in all the cities.
+```{r}
+x[1,]
+
+```
+How does the output look different with the `drop` argument?
+```{r}
+x[1,3, drop = FALSE]
+x[1,, drop = FALSE]
+```
+
+#### Omitting and Overwriting
+```{r}
+x <- matrix(c(0.3,4.5,55.3,91,0.1,105.5,-4.2,8.2,27.9),nrow=3,ncol=3); x
+x[,-2]
+x[-1,3:2] # notice the change in the positions too
+x[-1,-2] # without first row and second column
+
+x[2,] <- 1:3
+x[c(1,3),2] <- 900 # overwrites the second and the third row of the second column
+x[c(1,3), c(1,3)] <- c(-7,7)
+```
+
+Replacing diagonals
+```{r}
+diag(x) <- c(1,2,3)
+```
+
+#### Matrix transpose
+```{r}
+t(x)
+```
+
+#### Creating identity matrix
+```{r}
+i <- diag(3); i
+```
+
+#### Scalar multiple of a matrix
+```{r}
+a <- 2; a; x
+b <- a*x; b
+a+b; a-b # Matrix addition and substraction
+```
+
+#### Matrix multiplication
+> Note that matrix multiplication is not elementwise calculation, so the standard `*` cannot be used.
+
+```{r}
+dim(x); dim(b)
+x%*%b
+```
+
+#### Inverse of a matrix
+```{r}
+A <- matrix(data=c(3,4,1,2),nrow=2,ncol=2);A 
+solve(A)
+```
+
+An alternative way of creating a matrix using `dim()`.
+```{r}
+m <- 1:10; m
+dim(m) <- c(2,5)
+m
+```
+The functions `rowSums()` and `colSums()` calculate the total for each row and column of a matrix.
+
+```{r}
+a <- c(460.998, 314.4, 290.475, 247.900, 309.306, 165.8)
+b <- matrix(a, nrow = 3, byrow = TRUE,
+              dimnames = list(c("1","2", "3"), c("x", "y")))
+b
+totalRow <- rowSums(b); totalRow
+totalCol <- colSums(b); totalCol
+
+```
+
+# Working with date and time
+The `date()` function returns a character string of current date and time.
+```{r}
+date()
+class(date())
+```
+
+The `Sys.Date()` rerturns the current day in the current time zone.
+```{r}
+Sys.Date()
+class(Sys.Date())
+```
+
+`Sys.time()` returns returns the absolute date-time value.
+```{r}
+Sys.time()
+```
+
+
+### Formatting dates
+The follwoing codes are required while formating dates.
+
+ |Code  | Output that you get  |
+ |------|----------------------|
+ |   %d | day as number (0-31) | 
+ |   %a | abbreviated weekday  | 
+ |   A  | Unabbreviated weekday|
+ |   m  | months (00-12)       |
+ |   b  | abbreviated month    |
+ |   B  | unabbreviated month  | 
+ |   y  | two digit year       |
+ |   Y  | Four digit year      |
+
+```{r}
+d <- Sys.Date()
+d
+format(d, "%d %B %Y")
+d1 <- format(d, "%d-%B-%Y")
+d1; class(d1)
+```
+
+### Creating dates
+```{r}
+x <- c("1jan2016", "1feb2017", "1mar2018"); x
+k <- as.Date(x, "%d %b %Y");k; class(k)
+d2 <- Sys.time()
+d2
+format(d2, "%d-%B-%Y %H:%M:%S %Y")
+```
+
+
+There are basically two major data types related to time
+
+1. **POSIXct:** **(Portable Operating System Interface)** *ct* stands for calander time. It is the number of seconds since 1-Jan-1970. Negative numbers represent the number of seconds before this time.
+2. **POSIXlt:** *lt* stands for local time and is a named list of vectors representing seconds, minutes, hour, day, month, year and time zones.
+
+```{r}
+# current time as POSIXct
+unclass(Sys.time()) # What does unclass do?
+
+# as POSIXlt
+unclass(as.POSIXlt(Sys.time()))
+```
+
+
+Working with dates and time with `lubridate()`.
+```{r, eval=-1}
+install.packages("lubridate")
+library(lubridate)
+y <- ymd("2018-08-07");y; class(y)
+dmy(180807)
+ydm(180807)
+```
+You can also add the hour, minute and second information.
+```{r}
+dmy_hms("08-09-2019 08:30:00")
+```
+### Time zones. 
+For example, you have a scheduled admission interview over Skype in a University in London on 25 Sept 2019 at 09:45 am, what time shall it be for you in Kolkata?
+```{r}
+Sys.timezone() # System time zone
+head(OlsonNames(), 20) # Time zone directory
+interviewLondon <- dmy_hms("25-Sep-2019 09:45:00", tz = "Europe/London")
+interviewLondon
+interviewKolkata <- with_tz(interviewLondon,tz = "Asia/Calcutta")
+interviewKolkata
+```
+
+> So your interview timings are; (a) `r interviewLondon` if you are in London, and (b) `r interviewKolkata` if you are in Kolkata.
+
+# Logical Operators
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse); library(kableExtra)
+c1 <- c("TRUE & TRUE = TRUE", "TRUE & FALSE = FALSE", "FALSE & TRUE = FALSE", "FALSE & FALSE = FALSE")
+c2 <- c("TRUE | TRUE = TRUE", "TRUE | FALSE is TRUE", "FALSE | TRUE is TRUE", "FALSE | FALSE is FALSE")
+c3 <- c("!TRUE = FALSE", "!FALSE = TRUE")
+
+dt <- data.frame(Operator = c(rep("&",times = 4), "&&", rep("|",times = 4), "||", rep("!",times = 2)),
+                 Interpretation = c(rep("AND (element-wise)",4), "AND (single comparison)", 
+                                    rep("OR (element-wise)", 4), "OR (single comparison)", rep("NOT", 2)),
+                 Results = c(c1, "same as above", c2, "same as above", c3))
+knitr::kable(dt) %>%
+    kable_styling(bootstrap_options = c("bordered"), position = "center", full_width = FALSE) %>%
+    collapse_rows(columns = 1:2, valign = "middle")
+```
+
+Some examples
+```{r}
+a <- c(T,F,T,F); a
+b <- c(F,T,T,T); b
+a&b; a&&b
+a|b; a||b
+```
+
+### Logical subsetting and extraction
+```{r}
+myvec <- c(5,-2.3,4,4,4,6,8,10,40221,-8)
+myvec[c(F,T,F,F,F,F,F,F,F,T)] # extracts the negative numbers in the vector
+myvec<0
+myvec[myvec < 0] # same operation as above
+```
+
+
+To extract every second elment from the vector starting with the first
+```{r}
+myvec[c(T,F)] # the flag vector c(T,F) is recycled if it's too short.
+```
+
+
+Relational and logical operators together
+```{r}
+myvec[(myvec>0) & (myvec < 1000)]
+```
+
+
+Identifying the index positions of a vector
+```{r}
+which(myvec < 0)
+```
+
+Let's apply logical subsetting and extraction in matrices as an example. In the following example we shall
+
+a. Extract elements from a row or column.
+b. Change the elements in the matrix.
+
+```{r}
+A <- matrix(c(0.3,4.5,55.3,91,0.1,105.5,-4.2,8.2,27.9),nrow=3,ncol=3); A
+A[c(T,F,F),c(F,T,T)] #extracts the second and the third elements of first row. c(T, F,F) selects the first row, c(F,T,T) selects the elements from the selected first row.
+A[c(F,T,F),c(F,T,T)] #extracts the second and the third elements of second row.
+A[A<1] <- 100 # Changes the elements in the matrix with values less than 1.
+A
+```
+
+# More on Characters
+
+Let' create a character string and assign it to **s**.
+```{r}
+s <- "This is a character string"
+```
+We can check the length and number of characters in `s`.
+```{r}
+length(s)
+nchar(s)
+```
+
+
+
+
+### Escape Sequences
+
+| Sequence  |          Result |
+|-----------|-----------------|
+|   $\backslash{n}$    |      Starts a new line|
+|   $\backslash{t}$      |      Horizontal tab|
+|   $\backslash{b}$      |      Invokes a backspace|
+|   $\backslash{\backslash}$      |      Used as a single backslash |
+|   $\backslash{"}$      |      Includes a double quote |
+
+
+Example
+```{r}
+cat("here is a string \n split \t to neww\b \n\n\t lines")
+```
+
+
+### substring and matching
+The function `substr()` takes a string **x** and extracts the part of the string between two character positions (inclusive)
+```{r}
+substr(s, start = 11, stop = 19)
+substr(s, start = 11, stop = 19) <- "CHARACTER"
+```
+
+
+Its more easier to do with `sub()` and `gsub()`
+```{r}
+duck <- "Mother duck said quack, quack, quack."
+duck
+dog <- sub(pattern = "duck", replacement = "dog", duck )
+dog
+gsub(pattern = "quack", replacement = "bow", dog)
+```
+
+# Factors
+- Factors represent categorical data.
+- Factors can be ordered or unordered.
+- Factors can be thought as integer vector with labels, like 1 means 'low', 2 means 'high', 3 means 'very high'.
+- Example data set
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse); library(kableExtra)
+Names <- c("Kunal", "Ben", "Kritika", "Reena", "Narendra", "Smriti")
+Gender <- factor(c("Male", "Male", "Female", "Female", "Male", "Female"))
+Month.Birth <- factor(c("January", "March", "March", "December", "October", "October"))
+kable(data.frame(Names, Gender, Month.Birth)) %>% kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE, position = "center")
+```
+
+We can create factors using the information in the above table:
+```{r}
+(Names <- c("Kunal", "Ben", "Kritika", "Reena", "Narendra", "Smriti"))
+(Gender <- factor(c("Male", "Male", "Female", "Female", "Male", "Female")))
+(Month.Birth <- factor(c("January", "March", "March", "December", "October", "October")))
+(Month.Birth <- factor(c("January", "March", "March", "December", "October", "October"), levels = c("January", "March", "October", "December")))
+```
+
+
+## Extraction and subsetting
+
+Which boy was born in March?
+```{r}
+Names[Gender == "Male" & Month.Birth == "March"]
+```
+
+## Releveling a factor
+```{r}
+(levels(Month.Birth) <- c(1, 3, 10, 12))
+(levels(Gender) <- c(0, 1)) # 0 indicates female
+```
+
+## Defining and Ordering levels
+```{r}
+(m <- c("January", "March", "March", "December", "October", "October"))
+(Month.Birth <- factor(m))
+
+(Month.Birth <- factor(m, ordered = TRUE))
+
+# we can explicity convert it to an ordered level
+m.lev <- c("January", "March", "October", "December")
+Month.Birth <- factor(m,levels = m.lev, ordered = TRUE)
+levels(Month.Birth)
+# Checking the order
+Month.Birth[1] < Month.Birth[5]
+```
+
+
+
+## Cutting/binning
+Suppose you want to bin **y** into **small[0,2)**, **medium[2,4)**, and **large [4,6]**
+```{r}
+y <- c(0.53,5.4,1.5,3.33,0.45,0.01,2,4.2,1.99,1.01)
+table(cut(y, breaks = c(0,2,4,6), right = FALSE))
+table(cut(y, breaks = c(0,2,4,6), right = FALSE, include.lowest = TRUE)) # Note. include.lowest = TRUE only if right = FALSE
+table(cut(y, breaks = c(0,2,4,6), right = FALSE, include.lowest = TRUE, 
+    labels = c("small","medium", "large")))
+```
+
+# Lists
+- Lists are sepecial types of vectors which can contain elements of different classes. You can also have a list as a component of another list.
+- A single list can contain a numeric matrix, a logical array, a single character string, and a factor object. 
+```{r}
+(x <- list(10:20, "Khan", 1+2i, TRUE)); length(x)
+(f <- list(matrix(data = 1:4, nrow = 2, ncol = 2), x)); length(f)
+```
+
+We can create lists out of vectors, matrices and data frames.
+```{r}
+
+my_vector <- 1:10 
+my_matrix <- matrix(1:9, ncol = 3)
+my_df <- mtcars[1:10,] # to know about `mtcars` use ?mtcars
+
+# Construct list with these different elements:
+(my_list <- list(my_vector, my_matrix, my_df)) 
+
+# Adapt list() call to give the components names
+(my_list <- list(vector = my_vector, matrix =  my_matrix, dataframe = my_df))
+
+# print out the vector from the list
+my_list[[1]]
+
+# now print the second element in the vector
+my_list[[1]][2]
+
+my_list[[3]][1]
+my_list[[3]]["disp"]
+```
+The retrieved component of a list can be treated as a stand-alone object. For e.g
+```{r}
+f <- list(matrix(data=1:4,nrow=2,ncol=2),c(T,F,T,T),"hello")
+f[[1]] # retrieves the matrix
+# performing normal operations
+f[[1]] + 5.5 
+f[[1]][1,2]
+cat(f[[3]], "you!" )
+```
+To overwrite a member of `f`, the assignment operator can be used.
+```{r}
+f[[3]] <- paste(f[[3]], "you!"); f
+```
+
+Inorder to access the second and third components of `f`, we use `[]` instead of `[[]]` because using double brackets on a list is always interpreted with respect to a single member. This is referred to as **list slicing** and lets you select multiple list items at once.
+```{r}
+(f[c(2,3)])
+```
+## Naming list components
+We can name list components using `name()`:
+```{r}
+names(f) <- c("matrix", "logical", "char"); f
+```
+You can now perform member referencing using these names and the `$` operator, rather than the double square brackets.
+```{r}
+f$matrix
+f$logical
+```
+## Nesting lists
+- A member of a list can itself be a list.
+```{r}
+f
+names(x) <- c("num", "char", "complex", "logical" ); x
+f$list_x <- x; f 
+```
+To retreive members of the inner list;
+```{r}
+f$list_x$num[c(1,3,6)]
+```
+
+
+# Data frames
+- Data frames are used to store tabular data.
+- Data frames have an advantage over matrices in that they can store objects of different classes.
+- So in a way data frames are a collection of lists with the same length.
+
+```{r}
+(x <- data.frame(Sl = 1:4, Countries = c("Germany", "Brazil", "Argentina", "France"), Rank = c(1,3,2,4))
+)
+dim(x)
+```
+
+- Each row in the data frame is called a 'record' and each column called 'variable'.
+- Portions of data can be extracted with `[]`
+```{r}
+x[1,2] # this gives the element at row 1, col 2
+# or 
+x$Countries[1]
+```
+
+Each variables retain their class upon extraction. For e.g
+```{r}
+class(x$Countries)
+```
+
+Lets look at another example
+
+```{r}
+Name <-  c("Kunal", "Ben", "Kritika", "Reena", "Narendra", "Smriti")
+Gender <- c("M", "M", "F", "F", "M", "F")
+Age <- c(20, 18, 30, 24, 24, 27)
+mydata <- data.frame(Name, Gender, Age)
+class(mydata$Name)
+```
+
+
+To prevent this automatic conversion of strings to factors when using `data.frame`, set the optional argument `stringsAsFactors = FALSE`.
+```{r}
+mydata <- data.frame(Name, Gender, Age, stringsAsFactors = FALSE)
+class(mydata$Name)
+```
+
+## Adding data columns and combining data frames
+```{r}
+newrecord <- data.frame(Name = "Manoj", Gender = "M", Age = 18)
+(mydata <- rbind(mydata, newrecord))
+```
+
+Lets create a new column
+```{r}
+Funny <- c("High","High","Low","Med","High","Med", "High")
+(Funny <- factor(x=Funny,levels=c("Low","Med","High")))
+```
+
+Using `cbind()` we can now add this column
+```{r}
+dim(mydata); length(Funny)
+(mydata <- cbind(mydata, Funny))
+```
+
+
+## Logical Record Subsets
+Say you want to subset using a particular level. Lets look at the `'mydata'` example
+```{r}
+names(mydata)
+```
+
+Lets subset the data frame only for males 
+```{r}
+mydata[mydata$Gender == "M",]
+```
+
+Since the subset belongs only to males, you could now remove the Gender column
+```{r}
+mydata[mydata$Gender == "M", -2]
+```
+
+Let's extract from mydata the full records for individuals who are more than 20 years old AND/OR have a high degree of funniness.
+
+```{r}
+(mydata[mydata$Age >= 20 & mydata$Funny == "High",])
+(mydata[mydata$Age >= 20 | mydata$Funny == "Low",])
+```
+
+# Basic plotting
+## Coordinate vectors
+- R has incredibly flexible plotting tools for data and model visualisations.
+- Treat your screen as a blan, 2 dimensional canvas.
+- Plot points using x- and y- coordinates.
+- The `plot()` function takes two vectors (x and y) and opens a *graphics device* where it displays the result.
+- If a graphics device is already open, R's default behaviour is to refresh the device, overwriting the current contents with the new plot.
+```{r}
+f <- c(1.1,2,3.5,3.9,4.2)
+b <- c(2,2.2,-1.3,0,0.2)
+plot(f,b)
+```
+
+You could also use a matrix instead. Try this one!
+```{r, eval=FALSE}
+plot(cbind(f,b))
+```
+
+## Plot types
+The arguments that enter the `plot()` function are called graphical parameters. Some most commonly used graphical parameters are **type**, **main**, **xlab**, **ylab**, **col**, **pch**, **cex** (character expansion), **lty**, **lwd**, **xlim**, **ylim**.
+```{r, echo=-1}
+par(mfrow = c(1,2))
+plot(f,b, type = "l")
+plot(f,b, type = "b")
+```
+
+## Title and axis labels
+```{r, echo=-1}
+par(mfrow = c(1,2))
+plot(f,b, type = "o", main = "My Title", xlab = "My x-axis label", ylab = "My y-axis label")
+plot(f,b, type = "s", main = "My Title", xlab = "", ylab = "")
+```
+
+## Colour
+```{r, echo=-1}
+par(mfrow = c(1,2))
+plot(f,b, type = "o", main = "My Title", col = "firebrick4", xlab = "", ylab = "")
+title(xlab = "My X-axis label", col.lab = "green")
+title(ylab = "My Y-axis label", col.lab = "blue")
+plot(f,b, type = "s", main = "My Title", xlab = "", ylab = "", col = "gold", col.main = "red")
+```
+
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<object width="100%" height="500" data="https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf"></object>
+If the above pdf is not displayed in your mobile, click [here](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf) to download the pdf. 
+<p>**Source**:[www.nceas.ucsb.edu](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf)
+</p></html>
+
+## Appearances
+
+Use `?par()`, `?pch()` to know about graphical parameters in appearances.
+```{r, echo=-1}
+par(mfrow = c(1,2))
+plot(f,b, type = "o", main = "My Title", col = "firebrick4", xlab = "", ylab = "", xlim = c(2,3))
+title(xlab = "My X-axis label", col.lab = "green")
+title(ylab = "My Y-axis label", col.lab = "blue")
+plot(f,b, type = "s", main = "My Title", xlab = "", ylab = "", col = "gold", col.main = "red", ylim = c(0, 2))
+```
+
+```{r, echo=-1}
+par(mfrow = c(2,2))
+plot(f,b, type = "o", main = "My Title", col = "firebrick4", xlab = "", ylab = "", pch = 4)
+title(xlab = "My X-axis label", col.lab = "green")
+title(ylab = "My Y-axis label", col.lab = "blue")
+plot(f,b, type = "b", main = "My Title", xlab = "", ylab = "", col = "blue", col.main = "red", pch = 10)
+plot(f,b, type = "o", main = "My Title", col = "firebrick4", xlab = "", ylab = "", pch = 4, lwd = 4)
+title(xlab = "My X-axis label", col.lab = "green")
+title(ylab = "My Y-axis label", col.lab = "blue")
+plot(f,b, type = "b", main = "My Title", xlab = "", ylab = "", col = "blue", col.main = "red", pch = 10, lwd = 6)
+```
+
+## Adding Points, Lines, and Text
+- Normally `plot()` refreshes the active graphics device for a new plotting region.
+- We might want to add points, lines and text to an existing plot.
+- Some useful functions include:
+    - `points()`: adds points
+    - `lines()`, `abline()`, `segments()`: adds lines
+    - `text()`: writes text
+    - `arrows()`: adds arrows
+    - `legend()`: adds a legend
+    
+Lets consider an example. We shall recreate the following plot. The data points will be plotted differently according to their `x` and `y` locations, depending on their relation to the “sweet spot” pointed out in the figure. 
+
+- Points with a `y` value greater than 5 are marked with a purple ×; 
+- points with a `y` value less than −5 are marked with a green +. 
+- Points between these two `y` values but still outside of the sweet spot are marked with a ◦. 
+- Finally, points in the sweet spot (with `x` between 5 and 15 and with `y` between −5 and 5) are marked as a blue •. 
+- Red horizontal and vertical lines delineate the sweet spot, which is labeled with an arrow, and there’s also a legend.
+
+Lets begin by creating a hypothetical dataset.
+```{r}
+(x <- 1:20)
+(y <- c(-1.49,3.37,2.59,-2.78,-3.94,-0.92,6.43,8.51,3.41,-8.23,
+-12.01,-6.58,2.87,14.12,9.63,-4.58,-14.78,-11.67,1.17,15.62))
+
+```
+
+So now that we have the dataset ready we can start plotting. We shall recreate the plot given below stepwise.
+```{r, echo=FALSE}
+plot(x, y, type = "n", main = "")
+abline(h = c(-5, 5), col = "red", lty = 2, lwd = 2) 
+segments(x0=c(5,15),y0=c(-5,-5),x1=c(5,15),y1=c(5,5),col="red",lty=3, lwd=2)
+points(x[y>=5],y[y>=5],pch=4,col="darkmagenta",cex=2)
+points(x[y<=-5],y[y<=-5],pch=3,col="darkgreen",cex=2)
+points(x[(x>=5&x<=15)&(y>-5&y<5)],y[(x>=5&x<=15)&(y>-5&y<5)],pch=19, col="blue")
+points(x[(x<5|x>15)&(y>-5&y<5)],y[(x<5|x>15)&(y>-5&y<5)])
+lines(x,y,lty=4)
+arrows(x0=8,y0=14,x1=11,y1=2.5)
+text(x=8,y=15,labels="sweet spot")
+legend("bottomleft",
+    legend=c("overall process","sweet","standard",
+    "too big","too small","sweet y range","sweet x range"),
+    pch=c(NA,19,1,4,3,NA,NA),lty=c(4,NA,NA,NA,NA,2,3),
+    col=c("black","blue","black","darkmagenta","darkgr    een","red","red"),
+    lwd=c(1,NA,NA,NA,NA,2,2),pt.cex=c(NA,1,1,2,2,NA,NA),ncol = 2, cex = 0.7)
+
+```
+
+1. Lets create an empty plotting region where lines and points can be added.
+```{r}
+plot(x, y, type = "n", main = "")
+```
+
+2. The `abline` function is a simple way to add straight lines spanning a plot.
+```{r, eval=FALSE}
+abline(h = c(-5, 5), col = "red", lty = 2, lwd = 2) # h adds a horizontal line at the values of y (-5 and 5), to add verticle lines you could have used v = (5,15)
+```
+
+```{r, echo=FALSE}
+plot(x, y, type = "n", main = "")
+abline(h = c(-5, 5), col = "red", lty = 2, lwd = 2) # h adds a horizontal line at the values of y (-5 and 5), to add verticle lines you could have used v = (5,15)
+```
+
+3. Now we can add shorter line segments (and not lines spannig the entire plot) between the horizontal lines drawn in step 2.
+```{r, eval=FALSE}
+segments(x0=c(5,15),y0=c(-5,-5),x1=c(5,15),y1=c(5,5),col="red",lty=3, lwd=2)
+```
+
+```{r, echo=FALSE}
+plot(x, y, type = "n", main = "")
+abline(h = c(-5, 5), col = "red", lty = 2, lwd = 2) 
+segments(x0=c(5,15),y0=c(-5,-5),x1=c(5,15),y1=c(5,5),col="red",lty=3, lwd=2)
+```
+
+4. Now we can start adding points to the plot using `points()`.
+    i. `x[y>=5]` gives all the values of `x` for which the corresponding `y` values are `>=` 5.
+    ii. `y[y>=5]` gives the subset of `y` values `>=` 5.
+    iii. Both i. and ii. combine to give the coordinates in the plot.
+    ```{r, eval=FALSE}
+points(x[y>=5],y[y>=5],pch=4,col="darkmagenta",cex=2)
+```
+
+```{r, echo=FALSE}
+plot(x, y, type = "n", main = "")
+abline(h = c(-5, 5), col = "red", lty = 2, lwd = 2) 
+segments(x0=c(5,15),y0=c(-5,-5),x1=c(5,15),y1=c(5,5),col="red",lty=3, lwd=2)
+points(x[y>=5],y[y>=5],pch=4,col="darkmagenta",cex=2)
+```
+
+5. Now let's extracts the coordinates where y values are less than or equal to −5. A + point character is used, and you set the color to dark green.
+```{r, eval=FALSE}
+points(x[y<=-5],y[y<=-5],pch=3,col="darkgreen",cex=2)
+```
+
+```{r, echo=FALSE}
+plot(x, y, type = "n", main = "")
+abline(h = c(-5, 5), col = "red", lty = 2, lwd = 2) 
+segments(x0=c(5,15),y0=c(-5,-5),x1=c(5,15),y1=c(5,5),col="red",lty=3, lwd=2)
+points(x[y>=5],y[y>=5],pch=4,col="darkmagenta",cex=2)
+points(x[y<=-5],y[y<=-5],pch=3,col="darkgreen",cex=2)
+```
+
+
+6. The sixth step adds the blue “sweet spot” points, which are identified with `(x>=5&x<=15)&(y>-5&y<5)`.
+```{r, eval=FALSE}
+points(x[(x>=5&x<=15)&(y>-5&y<5)],y[(x>=5&x<=15)&(y>-5&y<5)],pch=19, col="blue")
+```
+
+```{r, echo=FALSE}
+plot(x, y, type = "n", main = "")
+abline(h = c(-5, 5), col = "red", lty = 2, lwd = 2) 
+segments(x0=c(5,15),y0=c(-5,-5),x1=c(5,15),y1=c(5,5),col="red",lty=3, lwd=2)
+points(x[y>=5],y[y>=5],pch=4,col="darkmagenta",cex=2)
+points(x[y<=-5],y[y<=-5],pch=3,col="darkgreen",cex=2)
+points(x[(x>=5&x<=15)&(y>-5&y<5)],y[(x>=5&x<=15)&(y>-5&y<5)],pch=19, col="blue")
+```
+
+
+7. This next command identifies the remaining points in the data set (with an x value that is either less than 5 OR greater than 15 AND a y value between −5 and 5). No graphical parameters are specified, so these points are plotted with the default black ◦.
+```{r, eval=FALSE}
+points(x[(x<5|x>15)&(y>-5&y<5)],y[(x<5|x>15)&(y>-5&y<5)])
+```
+
+```{r, echo=FALSE}
+plot(x, y, type = "n", main = "")
+abline(h = c(-5, 5), col = "red", lty = 2, lwd = 2) 
+segments(x0=c(5,15),y0=c(-5,-5),x1=c(5,15),y1=c(5,5),col="red",lty=3, lwd=2)
+points(x[y>=5],y[y>=5],pch=4,col="darkmagenta",cex=2)
+points(x[y<=-5],y[y<=-5],pch=3,col="darkgreen",cex=2)
+points(x[(x>=5&x<=15)&(y>-5&y<5)],y[(x>=5&x<=15)&(y>-5&y<5)],pch=19, col="blue")
+points(x[(x<5|x>15)&(y>-5&y<5)],y[(x<5|x>15)&(y>-5&y<5)])
+```
+
+8. To draw lines connecting the coordinates in x and y, you use lines. Here you’ve also set lty to 4, which draws a dash-dot-dash style line.
+```{r, eval=FALSE}
+lines(x,y,lty=4)
+```
+
+```{r, echo=FALSE}
+plot(x, y, type = "n", main = "")
+abline(h = c(-5, 5), col = "red", lty = 2, lwd = 2) 
+segments(x0=c(5,15),y0=c(-5,-5),x1=c(5,15),y1=c(5,5),col="red",lty=3, lwd=2)
+points(x[y>=5],y[y>=5],pch=4,col="darkmagenta",cex=2)
+points(x[y<=-5],y[y<=-5],pch=3,col="darkgreen",cex=2)
+points(x[(x>=5&x<=15)&(y>-5&y<5)],y[(x>=5&x<=15)&(y>-5&y<5)],pch=19, col="blue")
+points(x[(x<5|x>15)&(y>-5&y<5)],y[(x<5|x>15)&(y>-5&y<5)])
+lines(x,y,lty=4)
+```
+
+9. The ninth line of code adds the arrow pointing to the sweet spot. 
+```{r, eval=FALSE}
+arrows(x0=8,y0=14,x1=11,y1=2.5)
+```
+
+```{r, echo=FALSE}
+plot(x, y, type = "n", main = "")
+abline(h = c(-5, 5), col = "red", lty = 2, lwd = 2) 
+segments(x0=c(5,15),y0=c(-5,-5),x1=c(5,15),y1=c(5,5),col="red",lty=3, lwd=2)
+points(x[y>=5],y[y>=5],pch=4,col="darkmagenta",cex=2)
+points(x[y<=-5],y[y<=-5],pch=3,col="darkgreen",cex=2)
+points(x[(x>=5&x<=15)&(y>-5&y<5)],y[(x>=5&x<=15)&(y>-5&y<5)],pch=19, col="blue")
+points(x[(x<5|x>15)&(y>-5&y<5)],y[(x<5|x>15)&(y>-5&y<5)])
+lines(x,y,lty=4)
+arrows(x0=8,y0=14,x1=11,y1=2.5)
+```
+
+
+10. Now we shall add a text.
+```{r, eval=FALSE}
+text(x=8,y=15,labels="sweet spot")
+```
+
+```{r, echo=FALSE}
+plot(x, y, type = "n", main = "")
+abline(h = c(-5, 5), col = "red", lty = 2, lwd = 2) 
+segments(x0=c(5,15),y0=c(-5,-5),x1=c(5,15),y1=c(5,5),col="red",lty=3, lwd=2)
+points(x[y>=5],y[y>=5],pch=4,col="darkmagenta",cex=2)
+points(x[y<=-5],y[y<=-5],pch=3,col="darkgreen",cex=2)
+points(x[(x>=5&x<=15)&(y>-5&y<5)],y[(x>=5&x<=15)&(y>-5&y<5)],pch=19, col="blue")
+points(x[(x<5|x>15)&(y>-5&y<5)],y[(x<5|x>15)&(y>-5&y<5)])
+lines(x,y,lty=4)
+arrows(x0=8,y0=14,x1=11,y1=2.5)
+text(x=8,y=15,labels="sweet spot")
+```
+
+
+11. Finally, we can add alegend to the plot.
+```{r, eval=FALSE}
+legend("bottomleft",
+    legend=c("overall process","sweet","standard",
+    "too big","too small","sweet y range","sweet x range"),
+    pch=c(NA,19,1,4,3,NA,NA),lty=c(4,NA,NA,NA,NA,2,3),
+    col=c("black","blue","black","darkmagenta","darkgreen","red","red"),
+    lwd=c(1,NA,NA,NA,NA,2,2),pt.cex=c(NA,1,1,2,2,NA,NA),ncol = 2, cex = 0.7)
+
+```
+
+```{r, echo=FALSE}
+plot(x, y, type = "n", main = "")
+abline(h = c(-5, 5), col = "red", lty = 2, lwd = 2) 
+segments(x0=c(5,15),y0=c(-5,-5),x1=c(5,15),y1=c(5,5),col="red",lty=3, lwd=2)
+points(x[y>=5],y[y>=5],pch=4,col="darkmagenta",cex=2)
+points(x[y<=-5],y[y<=-5],pch=3,col="darkgreen",cex=2)
+points(x[(x>=5&x<=15)&(y>-5&y<5)],y[(x>=5&x<=15)&(y>-5&y<5)],pch=19, col="blue")
+points(x[(x<5|x>15)&(y>-5&y<5)],y[(x<5|x>15)&(y>-5&y<5)])
+lines(x,y,lty=4)
+arrows(x0=8,y0=14,x1=11,y1=2.5)
+text(x=8,y=15,labels="sweet spot")
+legend("bottomleft",
+    legend=c("overall process","sweet","standard",
+    "too big","too small","sweet y range","sweet x range"),
+    pch=c(NA,19,1,4,3,NA,NA),lty=c(4,NA,NA,NA,NA,2,3),
+    col=c("black","blue","black","darkmagenta","darkgreen","red","red"),
+    lwd=c(1,NA,NA,NA,NA,2,2),pt.cex=c(NA,1,1,2,2,NA,NA),ncol = 2, cex = 0.7)
+
+```
+
+## Barplots 
+Let's use the `mtcars` data set to draw barplots. You can use`?mtcars` to check the details of the data set.
+```{r}
+mtcars[1:5,] #gives you the first five rows 
+barplot(table(mtcars$cyl))
+```
+
+To make tings interesting, we can use another variable (factor) like `am` which describes the transmission as 0 = automatic and 1 = manual.
+So how many 4, 6, and 8 cylinder cars are manual or automatic?
+```{r}
+par(mfrow = c(2,2))
+cyl_matrix <- table(mtcars$am, mtcars$cyl)
+
+barplot(cyl_matrix, legend=TRUE, main = "(A)") # gives you a stacked plot with a legend
+
+barplot(cyl_matrix, legend.text = c("automatic", "manual"), args.legend = list(x = "top", cex = 0.6), main = "(B)")
+
+barplot(cyl_matrix, beside = TRUE, legend.text = c("automatic", "manual"), args.legend = list(x = "top", cex = 0.75), las = 1, main = "(C)") # las=1 forces the lables on the vertical axis to appear horizontally rather than parallel to it.
+
+barplot(cyl_matrix, col = c("red", "blue"), beside = TRUE, horiz = TRUE,legend.text = c("automatic", "manual"), args.legend = list(x = "bottomright", cex = 0.65), names.arg = c("4-Cyl", "6-Cyl", "8-Cyl"), las = 1, main="(D)")
+```
+
+>**Note:** <br>
+You could have drawn a legend separately as done in case of `plot()` via `legend()`, but this way automates the color assignment to ensure the reference keys match the precise shading of the bars themselves.
+
+## Pie Chart
+```{r}
+pie(table(mtcars$cyl),labels=c("V4","V6","V8"),col=c("white","gray","black"),main="Performance cars\nby cylinders")
+```
+
+>**Note**
+Pie charts are a very bad way of displaying information. The eye is good at judging linear measures and bad at judging relative areas. A bar chart or dot chart is a preferable way of displaying this type of data.
+Cleveland (1985), page 264: “Data that can be shown by pie charts always can be shown by a dot chart. This means that judgements of position along a common scale can be made instead of the less accurate angle judgements.” This statement is based on the empirical investigations of Cleveland and McGill as well as investigations by perceptual psychologists.
+
+You can see in the following charts that `pie()` is rather fun than science, as mentionend in the domcumentation.
+```{r}
+par(mfrow = c(1,2))
+n <- 200
+pie(rep(1, n), labels = "", col = rainbow(n), border = NA)
+
+pie(c(Sky = 85, "Sunny side of\npyramid" = 17, "Shady side of\npyramid" = 5),
+    init.angle = 315, col = c("deepskyblue", "yellow", "yellow3"), border = FALSE)
+```
+
+## Histograms
+- Barplots are really good in case of categorical variables but not good enough for numeric-continuous variables.
+- To draw a histogram, let's use the `hp` horsepower in the `mtcars` dataset.
+```{r}
+hist(mtcars$hp)
+arrows(x0 = 280, x1 = 180, y0 = 9, y1 = 7, pch = -9658)
+text(x = 285, y = 9.5, labels = "Positively Skewed")
+```
+
+Let's customise the histogram:
+```{r}
+hist(mtcars$hp,breaks=seq(0,400,25),col="gray",main="Horsepower",xlab="HP", las = 1, ylim = c(0,9))
+abline(v=c(mean(mtcars$hp),median(mtcars$hp)),lty=c(1,2),lwd=2, col= c("red", "blue"))
+legend("topright",legend=c("mean HP","median HP"),lty=c(1,2),lwd=3, col= c("red", "blue"))
+text(x = mean(mtcars$hp) +13, y = 8.5, col = "red", labels = round(mean(mtcars$hp)))
+text(x = median(mtcars$hp) -13, y = 8.5, col = "blue", labels = round(median(mtcars$hp)))
+```
+
+## Box-and-Whisker plot
+Lets use the `mag` column in the `quakes` data set. Use `?quakes` to read about the data set.
+```{r}
+boxplot(quakes$mag)
+```
+
+- We can also create side-by-side box plots.
+- Consider the `quakes` data set.
+- The variable `mag` defines the Richter magnitude, and `stations` defines the number of stations reporting.
+```{r}
+str(quakes)
+max(quakes$depth); min(quakes$depth)
+depth_cut <- cut(quakes$stations, breaks = c(0, 50,  100, 150, 200), right = FALSE)
+head(depth_cut)
+```
+
+- So the depth have been put in threee groups.
+- Now we are interested to know **how the magnitue is correlated to the depth of an earthquake**.
+```{r}
+boxplot(quakes$mag ~ depth_cut, xlab = "Depth (in km)", ylab = "Magnitude", col = "grey")
+```
+
+- We can see the **the more the depth of an earthquake, the greater is the magnitude**.
+
+## Scatterplots
+- We will work with the `iris` data set.
+- Collected in the mid- 1930s, this data frame of 150 rows and 5 columns consists of petal and sepal measurements for three species of perennial iris flowers—*Iris setosa*, *Iris virginica*, and *Iris versicolor* (Anderson, 1935; Fisher, 1936). 
+- Lets see the frequency distribution of these different species of flowers.
+```{r}
+head(iris)
+table(iris$Species)
+```
+
+- Lets see a simple plot of petal length and width (see fig (A)). 
+
+> We see that **longer petals also wider**.
+
+- But, we do not know how they vary with species.
+
+> Similarly, **virginica** has the longest and widest petals.
+
+```{r}
+par(mfrow = c(1,2))
+
+plot(iris[,4],iris[,3],xlab="Petal Width (cm)", ylab="Petal Length (cm)", las = 1, main = "(A)")
+
+plot(iris[,4],iris[,3],type="n",xlab="Petal Width (cm)", ylab="Petal Length (cm)", las = 1, main = "(B)")
+points(iris[iris$Species=="setosa",4],iris[iris$Species=="setosa",3],pch=19,col="green")
+points(iris[iris$Species=="virginica",4],iris[iris$Species=="virginica",3],pch=19,col="blue")
+points(iris[iris$Species=="versicolor",4],iris[iris$Species=="versicolor",3],pch=19,col="red")
+legend("topleft",legend=c("setosa","virginica","versicolor"), col=c("green","blue","red"),pch=c(19,19,19), cex = 0.8)
+```
+
+- You can generate the same image more simply by first setting up vectors that specify the desired point character and color for each individual observation.
+
+```{r}
+# Create pch for iris, 
+iris_pch <- rep(19, nrow(iris))
+
+# Overwrite and change the pch for setosa species = 1, where 1 is the pch
+iris_pch[iris$Species == "setosa"] <- 1
+
+# You can also have a diferent pch for virginica = 3
+iris_pch[iris$Species == "virginica"] <- 3
+
+# Now we can set the colors, starting with any default col
+iris_col <- rep("red", times = nrow(iris))
+
+# Lets set the col for setosa and virginica as green and blue
+iris_col[iris$Species == "setosa"] <- "green"
+iris_col[iris$Species == "virginica"] <- "blue"
+
+# Now, `iris_pch` and `iris_col` now can be used as the defined pch and col
+# Lets plot:
+plot(iris[,4], iris[,3], pch = iris_pch, col = iris_col, xlab="Petal Width (cm)", ylab="Petal Length (cm)", las = 1)
+```
+
+- This **vectorised operation** as done above has made it easier to create a **matrix of plots**:
+```{r}
+# This is the default plot without any custoimisation.
+plot(iris, main = "Default Plot\nNo Customisation")
+
+# This is the plot that you create with the customised pch and col
+plot(iris, pch = iris_pch, col = iris_col, main = "Customised Plot")
+
+# You can also do this for a select number of variables
+plot(iris[,2:4],pch = iris_pch, col = iris_col, main = "Customised Plot\nFor Three Variables Only" )
+```
+
+# More on data frames:
+## Finding missing values i.e. **NA**s or **NaN**s in dataset objects.
+Example:
+```{r}
+x <- c(1,2,NA,4,5,6)
+is.na(x)
+is.nan(x)
+```
+
+- A NaN is also NA but the converse is not true.
+
+```{r}
+x<- c(1,2,NA, NaN, 5,6)
+is.na(x)
+is.nan(x)
+```
+
+- Removing NAs
+```{r}
+x <- c(12, 56, 78, NA, 55, NA, NA, 78)
+yes.na <- is.na(x)
+x[!yes.na]
+# or
+no.na <- !yes.na
+x[no.na]
+
+# or
+
+DF <- data.frame(x = c(1, 2, 3), y = c(0, 10, NA))
+na.omit(DF)
+
+```
+
+## The `apply()` function
+- Applying a function to each element of an object
+
+```{r}
+x <- 1:20
+dim(x) <- c(5,4)
+colnames(x) <- c("a", "b", "c", "d")
+apply(x, MARGIN=1, sum) #sums over the rows of the matrix x 
+apply(x, MARGIN=2, mean)
+```
+
+## The `tapply()` function.
+- The tapply function is useful when we need to break up a vector into groups  defined by some classifying factor, compute a function on the subsets, and return the results in a convenient form. You can even specify multiple factors as the grouping variable, for example treatment and gender, or team and  handedness.
+- Lets say we have two vectors
+
+```{r}
+students <- factor(c("a","b", "c", "d", "e", "a","b", "c", "d", "e","a","b", "c", "d","a","b", "c", "a", "b", "c"))
+levels(students); length(students)
+marks <- c(12, 10, 15,16,12,18,19,13,15,14,1,12,18,20,21,15,16, 12, 14, 15)
+length(marks)
+```
+
+- We now want to calculate the mean of a, b, c,d and e
+
+```{r}
+(mean.mar.stu <- tapply(X = marks, INDEX = students, FUN = mean))
+(mean.mar.stu <- tapply(X = marks, INDEX = marks, FUN = length)) # this is like creating a frequency distribution.
+(mean.mar.stu <- tapply(X = students, INDEX = students, FUN = length))
+```
+
+- another example: using the `iris` dataset from the base R (we have used this data set before).
+
+```{r}
+str(iris)
+tapply(iris$Sepal.Length, iris$Species, mean)
+```
+
+## The `lapply()` function:
+- Applying a function to a list or vector 
+
+```{r}
+(x <- as.list(1:5))
+lapply(x, FUN = sqrt)
+
+(d <- data.frame(x = 1:5, y = 6:10))
+lapply(d, FUN = sqrt)
+lapply(d, FUN = max)
+```
+
+## The `sapply()` function
+- When you want to to get the output as a vector, matrix, or array instead of a list
+```{r}
+sapply(x, FUN = sqrt)
+sapply(d, FUN = sqrt)
+```
+
+# Reading in external data files
+## the table format
+- Typically, these files have a .txt extension (highlighting the plain-text style) or .csv (for comma-separated values).
+- One key feature is that it usually has a header.
+- Delimiter is a character used to seperate enteries in each line.
+- Missing value or NA is used to denote a missing value.
+```{r}
+(mydatafile <- read.table(file = "C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/8.2.1_mydatafile.txt",
+                         header = T, sep = " ", na.strings = "*", stringsAsFactors = F))
+```
+
+
+- Another alternative way of selecting the file is using the `file.choose()` command
+```{r, eval=FALSE}
+mydatafile <- read.table(file = file.choose(), header = T, sep = " ", na.strings = "*", stringsAsFactors = F)
+```
+
+## Spreadsheet workbooks
+- Using the `read.csv()` function.
+```{r}
+(dat <- read.csv(file = "C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/8.2.1_mydatafile.csv", header = FALSE,
+         stringsAsFactors = TRUE))
+```
+
+- Using the `read_excel()` function in the Environment window.
+
+
+## Writing out data files
+- The function for writing out table format files to your computer is `write.table()`.
+
+```{r, eval=FALSE}
+write.table(dat, file = "C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/data.csv", sep=",")
+
+```
+
+## writing out plots and graphic files
+- Use `?png` for details.
+
+```{r}
+png(filename = "C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/p.png")
+plot(iris); dev.off()
+
+jpeg(filename = "C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/p1.jpeg")
+plot(mtcars$hp); dev.off()
+```
+
+
+- The default unit is pixels which can be changed to *cm* or *mm* as follows
+```{r, eval=FALSE}
+jpeg(filename = "C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/myplot.jpeg", height = 6, width = 6, 
+     units = "cm", res = 200)
+x <- 1:20; y <- 21:40; plot(x,y); dev.off()
+```
+
+- When you have finished plotting, the file deveice must be closed with a `dev.off()` call. If `dev.off()` is not called R shall continue printing all the subsequent plotting commands to the file and overwrite it.
+
+## printing in a pdf format
+```{r}
+pdf(file = "C:/Users/pravesh/Google Drive/Copy/R/Lecture Basics of R/myplot.pdf", height = 6, width = 6)
+x <- 1:20; y <- 21:40; plot(x,y); dev.off()
+```
+
+
+
+# Practice
+
+1. Create a vector **x** and assign a numerical value to it.
+2. Create another vector **y** and assign the numbers 1 to 5.
+3. Creater a longer vector that contains numbers 1 to 5 ten times.
+4. Assign some meaningful names to the following vectors:
+    + `c(2, 4, 6, 8, 10, 12, 14, 16, 20)`
+    + `0`
+    + `3.141593`
+    + `c(1, 10, 100, 1000, 10000, 100000)`
+5. Create vectors that correspond to the following variables names:
+    + BMI
+    + Age
+    + daysPerMonth
+    + firstFivePrimeNumbers
+6. Create three vectors that each contain just 1 element with variable names `p`, `q`, and `r`, and values 1, 2, and 3. Then, create a new vector that contains multiple elements, using the scalars we just created i.e., create a vector `u` of length 3, with the subsequent elements of `p`, `q` and `r`. 
+7. Create a new vector u with length 96 that contains the elements of u as follows: 1, 2, 3, 1, 2, 3, …., 1, 2, 3.
+8. Suppose the surface area of a circle equals 25, what is the radius?
+9. What is the probability density at *x=0* of a normally distributed random variable *x* with mean (mu) equal to zero, and standard devation (sigma) equal to one?
+10. Sort the numbers 10,50,12,63,74,1,89,5,3,6,4 in ascending order.
+11. Generate a sequence of 100 numbers between -60 to 45 with a width of 5, and find the mean value.
+12. Use the functions `mean()` and `range()` to find the mean and range of:
+    - the numbers 1, 2, . . . , 21
+    - the sample of 50 random normal values, that can be generated from a normaL distribution with mean 0 and variance 1 using the assignment `y <- rnorm(50)`.
+    - the columns **height** and **weight** in the data frame **women**. [The datasets package that has this data frame is by default attached when R is started.] 
+13. What are the respective effects of the arguments `sep` and `collapse` in the `paste()` function?
+14. Create a matrix as depicted in the following table. The row names are the roll numbers of the students in economics class, and the column names are the codes of the courses. The values represent the marks obtained out of 50, and are random. You can assume and assign marks.
+
+```{r, echo=FALSE}
+library(tidyverse); library(kableExtra)
+data.frame( Subject = c(paste("ECON0",1:9, sep = ""),paste("ECON", 10:40, sep = "")),
+           ECON0101 = sample(20:50, 40, replace = TRUE),
+           ECON0102 = sample(20:50, 40, replace = TRUE),
+           ECON0201 = sample(20:50, 40, replace = TRUE),
+           ECON0791 = sample(20:50, 40, replace = TRUE)) %>%
+   kable() %>%
+    kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) %>%
+    scroll_box(height = "250px")
+```
+
+15. Calculate the mean marks obtained by each student in Q14 and find out which students got the top and last 3 positions (hint: you can sort the data).
+16. What date and time shall your friend in Massachusetts Institute of Technology (MIT) be speaking with you online if you call him/her now? 
+17. Create a 4X3 matrix with numbers between -30 and 30 (excluding 0). Extract the first and second elements from the fourth row. Extract the second and third elements from the second row. Replace all the negative elements in the matrix with 0.
+18. Extract all clips starting with either `http` or `https` from this vector 
+```{r, eval=FALSE}
+(c("www.dogman.com", "http://rotterdam.com", "https://facebook.com", "httpx://sims.com"))
+```
+
+19. Extract the street address from: **Presidency University, 86/1, College Street, Kolkata - 700073.**
+20. Remove all the non-alphabetical characters from the following paragraph and add your name at the end;
+
+> I think, sometimes, that my use of commas, and, occasionally, exclamation marks, can be excessive. Whenever I add a word or expression, not necessary, to the sentence, just like I did with the "not necessary" and like am doing right now, I always include these words, well maybe not always, usually include these inserts between commas; so, basically, I enjoy writing long sentences, joined with lots of commas and, frequently, semi-colons and, often, colons (and have been rather prone to using brackets, as well).
+
+I am posting the solution to this question as you shall require another package called `mgsub`. Do let me know if you have any queries.
+```{r, eval=-1}
+install.packages("mgsub")
+library(mgsub)
+k <- 'I think, sometimes, that my use of commas, and, occasionally, exclamation marks, can be excessive. Whenever I add a word or expression, not necessary, to the sentence, just like I did with the "not necessary" and like am doing right now, I always include these words, well maybe not always, usually include these inserts between commas; so, basically, I enjoy writing long sentences, joined with lots of commas and, frequently, semi-colons and, often, colons (and have been rather prone to using brackets, as well).'
+
+p <- mgsub(pattern = c("\\,", "\\(", "\"", "\\.", "\\)", "\\;"), replacement = rep("", times = 6), k)
+paste(p, "My Name", sep = " --- ")
+```
+
+
+21. Create an ordered vector as represented in the following table, and replicate the output table:
+```{r, echo=FALSE}
+df <- data.frame(Slow = 5, Fast = 6, Insane = 3)
+kable(df) %>%
+    kable_styling(bootstrap_options = "striped", position = "left", full_width = FALSE)
+```
+
+22. a. Construct and store a 4 x 2 matrix that's filled row-wise with the values 4.3, 3.1, 8.2, 8.2, 3.2, 0.9, 1.6, and 6.5, in that order.
+    b. Confirm the dimensions of the matrix from (a) are 3 x 2 if you remove any one row.
+    c. Overwrite the second column of the matrix from (a) with that same column sorted from smallest to largest.
+    d. What does R return if you delete the fourth row and the first column from (c)? Use matrix to ensure the result is a single-column matrix, rather than a vector.
+    e. Store the bottom four elements of (c) as a new 2 x 2 matrix.
+    f. Overwrite, in this order, the elements of (c) at positions (4;2), (1;2), (4;1), and (1;1) with $-\frac{1}{2}$ of the two values on the diagonal of (e).
+23. a. Calculate the following:
+$$\frac{2}{7}\left( 
+\begin{bmatrix}
+1 & 2 \\
+2 & 4\\
+7 & 6 \\ 
+\end{bmatrix} - \begin{bmatrix}
+10 & 20 \\
+30 & 40\\
+50 & 60 \\ 
+\end{bmatrix}\right)$$
+    b. Store these two matrices:
+    $$ A = \begin{bmatrix}
+    1\\2\\7
+    \end{bmatrix}  B = \begin{bmatrix}
+    3\\4\\8
+    \end{bmatrix} 
+    $$
+    Which of the following multiplications are possible?
+        i. $A.B$
+        ii. $A^\intercal.B$
+        iii. $B^\intercal.\left(A.A^\intercal \right)$
+        iv. $\left(A.A^\intercal \right). B^\intercal$
+        v. $\left[\left(B.B^\intercal \right) + \left(A.A^\intercal \right) - 100I_{3} \right]^{-1}$
+        
+24. a. Store the vector `c(7,1,7,10,5,9,10,3,10,8)` as `nums`. Print the elements greater than 5 OR equal to 2.
+```{r, include=FALSE}
+nums <- c(7,1,7,10,5,9,10,3,10,8)
+nums[nums > 5 | nums == 2]
+```
+    b. Store the vector `c(8,8,4,4,5,1,5,6,6,8)` and print the elements less than or equal to 6 AND not equal to 4.
+```{r, include=FALSE}
+nums1 <- c(8,8,4,4,5,1,5,6,6,8)
+nums1[nums1 <= 6 & nums1 != 4]
+```
+25. Re-create exactly the following output:
+```{r, echo=FALSE}
+cat("The quick brown fox\n\t jumped over\n\t\t the lazy dogs")
+```
+26. Suppose you've stored the values `num1 <- 4` and `num2 <- 0.75`. Write a line of R code that returns the following string:
+```{r, echo=FALSE}
+num1 <- 4; num2 <- 0.75; prod <- num1*num2
+paste("The result of multiplying", num1, "by", num2, "is", prod)
+```
+27. On my local machine, the directory for my work on this book is specified in R as **"/Users/ptamang/Documents/RBook/"**. Imagine it is your machine - write a line of code that replaces **ptamang** in this string with your first initial and surname.
+28. Store the following string **"How much wood could a woodchuck chuck"** and glue it to **"if a woodchuck could chuck wood."** Next replace all instances of **wood** with **metal** in the resulting string.
+29. The Indian government consists of the political parties **BJP**, **INC**, **CPI**, **TMC** and other parties grouped under **Others** category. Suppose you asked 20 Indians which of these they identified most with and obtained the following data:
+    - There were 12 males and 8 females; the individuals nnumbered 1, 5-7, 12, and 14-16 were females.
+    - The individuals numbered 1,4,12,15,16 and 19 identified with BJP; no one identified with CPI, the individuals numbered 6,9 and 11 identified with INC, 10 and 20 identified with Others, and the rest with TMC.
+    a. Use your knowledge of vectors (for example, subsetting and overwriting) to create two character vectors: **sex** with entries "M" (male) and "F" (female) and **party** with entries "BJP", "INC", "CPI", "TMC", and "Others". Make sure the entries are placed in the correct positions as outlined earlier.
+    
+```{r, include=FALSE}
+sex <- c(rep("M", times = 20))
+sex[c(1, 5:7, 12, 14:16)] <- "F"
+sex_fac <- as.factor(sex)
+
+party <- c(rep("TMC", times = 20))
+party[c(6,9, 11)] <- "INC"
+party[c(10, 20)] <- "Others"
+party[c(1,4,12,15,16, 19)] <- "BJP"
+party_fac <- as.factor(party)
+```
+
+b. Create two different factor vectors based on **sex** and **party**. Does it make any sense to use `ordered=TRUE` in either case? How has R appeared to arrange the levels?
+    
+```{r, include=FALSE}
+party1 <- factor(party, ordered = TRUE)
+```
+    
+  c. Use factor subsetting to do the following:
+       i. Return the factor vector of chosen parties for only the male participants.
+        ii. Return the factor vector of genders for those who chose BJP.
+        
+```{r, include=FALSE}
+party_fac[sex_fac == "M"]
+sex_fac[party_fac == "BJP"]
+```
+        
+   d. Another six people joined the survey, with the results **c("BJP","INC","INC","CPM","TMC","BJP")** for the preferred party and **c("M","M","F","F","F","M")** as their gender. Combine these results with the original factors from (b).
+  
+```{r, include=FALSE}
+party0 <-  c("BJP","INC","INC","CPM","TMC","BJP")
+sex0 <- c("M","M","F","F","F","M")
+
+sex_fac_comb <- factor(c(sex, sex0))
+party_fac_comb <- factor(c(party, party0))
+```
+  
+Suppose you also asked all individuals to state how confident they were that BJP will win more seats in West Bengal than TMC in the next election and to attach a subjective percentage to that confidence. The following 26 results were obtained: 93, 55, 29, 100, 52, 84, 56, 0, 33, 52, 35, 53, 55, 46, 40, 40, 56, 45, 64, 31, 10, 29, 40, 95, 18, 61.
+    e. Create a factor with levels of confidence as follows: Low for percentages [0,30]; Moderate for percentages (30,70]; and High for percentages (70,100].
+    
+```{r, include=FALSE}
+confidence <- c(93, 55, 29, 100, 52, 84, 56, 0, 33, 52, 35, 53, 55, 46, 40, 40, 56, 45, 64, 31, 10, 29, 40, 95, 18, 61)
+
+confidenceLevels <- cut(confidence, breaks = c(0, 30, 70, 100), include.lowest = TRUE)
+
+levels(confidenceLevels) <- c("Low", "Moderate", "High")
+
+```
+    
+   f. From (e), extract the levels corresponding to those individuals who originally said they identified with BJP. Do this also for TMC. What do you notice?
+   
+```{r, include=FALSE}
+table(confidenceLevels[party_fac_comb == "BJP"])
+table(confidenceLevels[party_fac_comb == "TMC"])
+```
+   
+30. a. Create a list that contains, in this order, a sequence of 20 evenly spaced numbers between -4 and 4; a 3 x 3 matrix of the logical vector c(F,T,T,T,F,T,T,F,F) filled column-wise; a character vector with the two strings "don" and "quixote"; and a factor vector containing the observations c("LOW","MED","LOW","MED","MED","HIGH"). Then, do the following:
+        i. Extract row elements 2 and 1 of columns 2 and 3, in that order, of the logical matrix.
+        ii. Obtain all values from the sequence between -4 and 4 that are greater than 1. 
+        iii. Using `which()` determine which indices in the factor vector are assigned the "MED" level.
+31. a. Create and store this data frame as **dframe** in your R workspace:
+```{r, echo=FALSE}
+library(tidyverse); library(kableExtra)
+person <- c("Bumrah", "Kom", "Phogat", "Bhutia", "Sindhu", "Khan")
+gender <- factor(c("M", "F", "M", "M", "F", "F"))
+funny <- factor(c("High", "Med", "Low", "High", "Med", "Med"), levels = c("Low", "Med", "High"))
+dframe <- data.frame(person, gender, funny, stringsAsFactors = FALSE)
+knitr::kable(dframe) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), position = "left", full_width = FALSE)
+```
+        The variables **person**, **gender**, and **funny** should be of character, factor (with levels **F** and **M**), and factor (with levels **Low**, **Med**, and **High**) respectively.
+        b. Create another dataframe contatining information on 4 more people. Append this data frame to the one you created in (a).
+        c. Add a new column (name it **age**) containing information on age to the appended data frame in (b).
+        d. Reorder the column variables of the data frame in (c) such that the **age** column is after the **gender** column.
+        e. Use your knowledge of handling character strings and write a single line of code that will extract from the reordered data frame in (d), all the records of persons whose name starts with **B**. For example if you were to do the same with **dframe**, the oputput shoud look exactly as given below:
+```{r, echo=FALSE}
+e <- dframe[substr(dframe$person, start = 1, stop = 1) == "B",]
+knitr::kable(e) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), position = "left", full_width = FALSE)
+```
+32. Store the following matrix
+$$\begin{bmatrix}
+34 & 0 & 1\\
+23 & 1 &2 \\
+33 & 1& 1\\
+42 & 0 & 1 \\
+41 & 0 & 2
+\end{bmatrix}$$
+    Then do the following:
+    i. Coerce the matrix to a data frame.
+    ii. As a data frame, coerce the second column to be logical valued.
+    iii. As as data frame, coerce the third column to be factor valued.
+    
+33. Use the code given below to download the United States real GDP rates from 1929.
+`t <- htmltab("https://www.thebalance.com/us-gdp-by-year-3305543", 1)` The table is stored in `t`. you can check the class of `t` and confirm that its a data frame. You can additionally visit the website to know more about the data structure.
+    i. Install `htmltab` package and load it in the current session. 
+    ii. All you need to do is to find the average the real gdp growth during 1950 - 1964.
+    iii. You can plot the growth rates since the period 1929.
+```{r, include=FALSE, eval=FALSE}
+
+library(htmltab); library(tidyverse); library(lubridate)
+t <- htmltab("https://www.thebalance.com/us-gdp-by-year-3305543", 1)
+class(t)
+t1 <- mutate(t, Year = as.Date(Year, "%Y")) 
+t2 <- mutate(t1, Year = substr(Year, start = 1, stop = 4))
+t3 <- filter(t2, Year >= 1950) %>%
+  filter(Year <= 1964) %>%
+  select(c(Year, growth = `GDP Growth Rate`)) %>%
+  mutate(growth = str_sub(growth, start = -4, end = -2))
+
+t3$growth1 <- as.numeric(if_else(t3$growth < 1, paste("-", t3$growth, sep = ""), t3$growth))
+mean(t3$growth1)
+```
+
+```{r, include=FALSE, eval=FALSE}
+t <- htmltab("https://www.thebalance.com/us-gdp-by-year-3305543", 1)
+class(t)
+
+rgdp <- t$`Real GDP (trillions)`
+
+library(mgsub)
+
+t$RGDP <- as.numeric(mgsub(rgdp, c("Â", "\\$", ","), c("", "", ".")))
+mean(t[t$Year >= 1950 &  t$Year <= 1964, 6])
+
+plot(t[,1],t[,6], xlab = "Years", ylab = "Real GDP (trillions of $)", type = "l")
+```
+
+34. As closely as you can, recreate the following plot:
+```{r, echo=FALSE}
+x <- -3:3; y <- 7:13
+plot(x, y, type = "n", xlab = "", ylab = "")
+abline(h = c(7,13), v = c(-3,3), lty = 2)
+arrows(x0 = -2.5, y0 = 12.5, x1 = -1, y1 = 10.5)
+arrows(x0 = -2.5, y0 = 7.5, x1 = -1, y1 = 9.5)
+arrows(x0 = 2.5, y0 = 12.5, x1 = 1, y1 = 10.5)
+arrows(x0 = 2.5, y0 = 7.5, x1 = 1, y1 = 9.5)
+text(x = 0, y = 10, labels = "SOMETHING\n PROFOUND")
+```
+
+35. Use the `quakes` data set and the `mag` column to create the following boxplot: Use `?quakes` to read the description of the data set. You can use the `shape` package if you want to.
+```{r, echo=FALSE}
+library(shape)
+boxplot(quakes$mag, col = "green")
+Arrows(x0 = 0.7, x1 = 0.87, y0 = 5.7, y1 = 5.7, arr.type = "triangle")
+text(x = 0.65, y = 5.7, labels = "Max")
+
+Arrows(x0 = 1.3, x1 = 1.15, y0 = 4, y1 = 4, arr.type = "triangle", arr.col = "red")
+text(x = 1.35, y = 4, labels = "Min", col = "red")
+
+Arrows(x0 = 1.3, x1 = 1.08, y0 = 6, y1 =6, arr.type = "triangle")
+text(x = 1.38, y = 6, labels = "Outliers")
+
+Arrows(x0 = 1.3, x1 = 1.15, y0 = 5.3, y1 =quantile(quakes$mag)[4], arr.type = "triangle", arr.length = .3)
+text(x = 1.38, y = 5.3, labels = "Upper\n(3rd)\nquartile")
+
+Arrows(x0 = 1.3, x1 = 1.23, y0 = median(quakes$mag), y1 =median(quakes$mag), arr.type = "triangle")
+text(x = 1.38, y = median(quakes$mag), labels = "Median")
+
+Arrows(x0 = 0.7, x1 = 0.77, y0 = quantile(quakes$mag)[2], y1 = quantile(quakes$mag)[2], arr.type = "triangle")
+text(x = 0.65, y = quantile(quakes$mag)[2], labels = "Lower\n(1st)\nquartile")
+
+```
+
+36. Us the built-in `InsectSprays` data frame, containing counts of insects on various agricultural units treated with one of six sprays:
+    i. Produce a histogram of the counts of insects using base R graphics.
+    ii. Obtain the total number of insects found according to each spray. Then produce a vertical barplot and pie chart of these totals, labeling each plot appropriately.
+    iii. Generate side-by-side boxplots of the counts of insects according to each spray type and include appropriate axis labels and a title.
+
+37. Yet another of R’s useful ready-to-use data sets is `USArrests`, containing data on the number of arrests for murder, rape, and assault per 100,000 individuals in each of the 50 states of the United States, recorded in 1973 (see, for example, McNeil, 1977). It also includes a variable giving the percentage of urban-based population in each state. Briefly inspect the data frame object and the accompanying documentation `?USArrests`. Then complete the following:
+    i. Generate a histogram of the proportion of urban population for the states. Set your breaks to be 10 units each, between 0 and 100. Have the histogram show the first quartile, the median, and the third quartile; then provide a matching legend. Use colors as you like and include appropriate axis annotation.
+    ii. The code `t(as.matrix(USArrests[,-3]))` creates a matrix of the `USArrests` data without the urban population column, and the built-in R object `state.abb` provides the two-letter state abbreviations, in alphabetical order, as a character vector. Use these two structures and base R graphics to produce a horizontal, stacked barplot with the horizontal bars labeled with state abbreviations and with each bar split according to the type of crime (murder,
+rape, and assault). Include a legend.
+    iii. Define a new factor vector `urbancat` that is set to 1 if the corresponding state has an urban population percentage greater than the median percentage and is set to 0 otherwise.
+    iv. Create a new copy of `USArrests` in your workspace, after deleting the `UrbanPop` column, leaving just the three crime rate variables. Then insert a new, fourth column in this object with `urbancat`.
+    v. Use the data frame from (iv) to produce a scatterplot matrix and other associated plots of the three crime rates against one another. Use `color` to split the crime rates according to the two levels of `urbancat`.
+38. Install the package `titanic`. Read the description of the dataset by `?titanic`.
+    i. Load the `titanic_test` and `titanic_train` datasets from the package.
+    ii. Upon careful inspection you will find that the `titanic_test` dataset is a continuation of the `titanic_train` dataset. However, one column in `titanic_test` is missing. Identify the missing column and add the column to the `titanic_test` dataset with hypothetical column values similar to the one in the `titanic_train` dataset.
+    iii. After completing i. and ii. combine the datasets into a single one and name it. Check the dimensions of the resulting dataset to confirm that you have all the data.
+    iv. How many males did survie in iii? What was their most common age?
+    v. What kind of relationship can you infer between `Age` and `Class` in iii? (Use a box-plot.)
+    vi. How is the fare distribution skewed in iii? Positive or negative?
+    vii. Is there a correlation between fare and survival in iii?
+    
+```{r, include=FALSE}
+library(titanic)
+names(titanic_test); names(titanic_train)
+class(titanic_train$Survived) # checking the class of the missing column
+table(titanic_train$Survived)
+
+titanic_test$Survived <- sample(c(0,1), nrow(titanic_test), replace = TRUE)
+titanic_test_mod <- titanic_test[,c(1,12,2:11)]
+names(titanic_test_mod)
+
+titanic_full <- rbind(titanic_train, titanic_test_mod)
+head(titanic_full[1:5, 1:4])
+dim(titanic_full)
+
+# iv
+library(tidyverse)
+MaleSurvived <- filter(titanic_full, Sex == "male" & Survived == 1) 
+count(MaleSurvived) ; dim(MaleSurvived) ;dim(na.omit(MaleSurvived))
+median(na.omit(MaleSurvived$Age)) # their most common age.
+
+```
+    
+<div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;"></div>
